@@ -54,7 +54,9 @@ outfile <- data.table(
     p_cases_daily_error = infile$p_cases_daily_error,
     p_stillsick = infile$p_stillsick,
     p_stillsick_error = infile$p_stillsick_error,
-    region = map
+    region = map,
+    # add country column for geocoding purposes
+    country = 'Spain'
 )
 
 'Data processing complete'
