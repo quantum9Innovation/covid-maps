@@ -21,4 +21,4 @@ To build the application, follow the steps below:
 When you run the build script, it systematically calls a number of scripts in the [`src/`](./src/) directory. The procedure that it follows is:
 
 1. [`fetch.R`](./src/fetch.R): fetches the latest data and saves it locally
-3. [`map.py`](./src/map.py): generates Plotly map
+2. [`map.py`](./src/map.py): generates Plotly map
