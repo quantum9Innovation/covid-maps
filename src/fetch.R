@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-# USAGE: `Rscript fetch.R <countrycode>`
+# USAGE: `Rscript fetch.R <countrycode> ...`
 # OUTPUT: ./fetched/{countrycode}/{countrycode}-latest-estimate.csv
 
 # This script fetches the necessary data from 
@@ -18,53 +18,58 @@ COUNTRIES <- c(
     'US', 'ZA'
 )
 
-if (length(args) != 1) {
+if (length(args) == 0) {
     stop(
         paste('', 
         'Insufficient arguments provided.',  
         'Please see USAGE:',
-        '   `Rscript fetch.R <countrycode>`',  
+        '   `Rscript fetch.R <countrycode> ...`',  
         sep='\n')
     )
-} else if ( !(args[1] %in% COUNTRIES) ) {
-    stop(
-        paste('', 
-        'Entered country code is not supported yet.',  
-        'Available countries are:',
-        paste(COUNTRIES, collapse=', '), 
-        sep='\n')
-    )
-}
+} 
 
-args.countrycode <- args[1]; 'Arguments parsed successfully'
-
-
-# fetch raw data from source
-data <- fread(paste(
-    'http://raw.githubusercontent.com/GCGImdea/coronasurveys/master/data/estimates-nsum-2022/PlotData/regional_data/', 
-    args.countrycode, '-latest-estimate.csv',
-    sep=''
-))
-paste('All data for', args.countrycode, 'has been fetched successfully')
+for ( arg in args ) {
+    if ( !(arg %in% COUNTRIES) ) {
+        stop(
+            paste('', 
+            'Entered country code is not supported yet.',  
+            'Available countries are:',
+            paste(COUNTRIES, collapse=', '), 
+            sep='\n')
+        )
+    }
+}; 'Arguments parsed successfully'
 
 
-# output
+# loop through all countries
 setwd('./fetched/')
-if (!dir.exists(args.countrycode)) dir.create(args.countrycode)
-write.csv(
-    data,
-    paste(
-        args.countrycode, '/',
-        args.countrycode, '-latest-estimate.csv',
+for ( arg in args ) { 
+    # fetch raw data from source
+    data <- fread(paste(
+        'http://raw.githubusercontent.com/GCGImdea/coronasurveys/master/data/estimates-nsum-2022/PlotData/regional_data/', 
+        arg, '-latest-estimate.csv',
         sep=''
-    ),
-    quote=FALSE
-)
-paste(
-    'Process completed; output stored at ./fetched/', 
-    args.countrycode, '/', 
-    args.countrycode, '-latest-estimate.csv', 
-    sep=''
-)
+    ))
+    print(paste('All data for', arg, 'has been fetched successfully'))
+
+
+    # output
+    if (!dir.exists(arg)) dir.create(arg)
+    write.csv(
+        data,
+        paste(
+            arg, '/',
+            arg, '-latest-estimate.csv',
+            sep=''
+        ),
+        quote=FALSE
+    )
+    print(paste(
+        'Process completed; output stored at ./fetched/', 
+        arg, '/', 
+        arg, '-latest-estimate.csv', 
+        sep=''
+    ))
+}
 
 'Exited with 0; operation successful'
