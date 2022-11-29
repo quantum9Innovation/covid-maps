@@ -1,6 +1,6 @@
-# CARTOframes
+# COVID Maps
 
-CARTOframes for GCGImdea/Coronasurveys
+COVID-19 choropleth maps for GCGImdea/Coronasurveys
 
 ---
 
@@ -11,7 +11,8 @@ To build the application, follow the steps below:
 1. Clone the repository:\
    `git clone https://github.com/quantum9innovation/CARTOframes`
 2. Install the dependencies
-   <!-- TODO: list these -->
+   1. R dependencies: `install.packages('data.table')`
+   2. Python dependencies: `pip install plotly pandas`
 3. Run the build script:\
    `scripts/make.sh`
 
@@ -20,5 +21,4 @@ To build the application, follow the steps below:
 When you run the build script, it systematically calls a number of scripts in the [`src/`](./src/) directory. The procedure that it follows is:
 
 1. [`fetch.R`](./src/fetch.R): fetches the latest data and saves it locally
-2. [`locate.R`](./src/locate.R): decodes region abbreviations into locatable names
 3. [`map.py`](./src/map.py): generates Plotly map
