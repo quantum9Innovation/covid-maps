@@ -212,3 +212,7 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Project-specific
+# ================
+src/fetched
