@@ -21,7 +21,7 @@ countrycode = sys.argv[1]
 country_lower = countrycode.lower()
 
 # validate arguments
-COUNTRIES = ['DE', 'US']
+COUNTRIES = ['DE', 'CL', 'US']
 if countrycode not in COUNTRIES and countrycode != 'all':
     print(
         'ERROR: Invalid country code. '
