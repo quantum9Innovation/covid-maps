@@ -9,7 +9,7 @@ COVID-19 choropleth maps for GCGImdea/Coronasurveys
 To build the application, follow the steps below:
 
 1. Clone the repository:\
-   `git clone https://github.com/quantum9innovation/CARTOframes`
+   `git clone https://github.com/quantum9innovation/covid-maps`
 2. Install the dependencies
    1. R dependencies: `install.packages('data.table')`
    2. Python dependencies: `pip install plotly pandas`
