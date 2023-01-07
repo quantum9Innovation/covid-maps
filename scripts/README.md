@@ -1,8 +1,13 @@
 
 # Scripts
 
-This folder contains the scripts required for automating this process. As of right now, they are not fully complete, but are good enough for generating the map. There is only one script that needs to be run, namely:
+This folder contains the scripts required for automating this process of generating a map.
+To generate a fast map showing only the latest estimates for each country, use:
 
 ```shell
-./make.sh
+scripts/make-latest.sh
 ```
+
+To generate a map with all available data, use `make-full.sh` instead.
+
+**Run all scripts from the root directory of this repository**
