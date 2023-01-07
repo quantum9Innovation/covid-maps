@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# USAGE: `python map.R <countrycode>`
+# USAGE: `python map.R <countrycode> ?<style>`
 # OUTPUT: Plotly map
 
 # Use `python map.py all` to generate a map for all countries
@@ -14,11 +14,15 @@ from plotly import graph_objects as go
 import pandas as pd
 
 # get arguments
-if len(sys.argv) != 2:
-    print('USAGE: `python map.py <countrycode>`')
+if len(sys.argv) < 2:
+    print('USAGE: `python map.py <countrycode> ?<style>`')
     sys.exit()
 countrycode = sys.argv[1]
 country_lower = countrycode.lower()
+
+style = 'open-street-map'
+if len(sys.argv) > 2:
+    style = sys.argv[2]
 
 # validate arguments
 COUNTRIES = ['CL', 'DE', 'ES', 'FR', 'GB', 'GR', 'IT', 'JP', 'PT', 'US', 'ZA']
@@ -67,7 +71,7 @@ fig = go.Figure(go.Choroplethmapbox(
     marker_opacity=0.75,
 ))
 fig.update_layout(
-    mapbox_style='open-street-map',
+    mapbox_style=style,
     mapbox_zoom=2,
     mapbox_center={'lat': 35, 'lon': -40},
 )
