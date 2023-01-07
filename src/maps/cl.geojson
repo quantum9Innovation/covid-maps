@@ -2,8 +2,8 @@
     "type": "FeatureCollection",
     "features": [
         {
-            "type": "CLAR",
-            "id": "296378",
+            "type": "Feature",
+            "id": "CLAR",
             "properties": {
                 "hc-group": "admin1",
                 "hc-middle-x": 0.54,
