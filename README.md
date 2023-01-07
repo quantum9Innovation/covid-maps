@@ -14,7 +14,7 @@ To build the application, follow the steps below:
    1. R dependencies: `install.packages('data.table')`
    2. Python dependencies: `pip install plotly pandas`
 3. Run the build script:\
-   `scripts/make.sh`
+   `scripts/make-latest.sh`
 
 ## Application Details
 
